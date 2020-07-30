@@ -9,11 +9,9 @@ import ec.edu.utpl.app.sgcmapplication.models.dao.IUsuarioDao;
 import ec.edu.utpl.app.sgcmapplication.models.entity.Usuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Axel
- */
+@Service
 public class UsuarioServiceImpl  implements IUsuarioService{
     @Autowired
     private IUsuarioDao userDao;
