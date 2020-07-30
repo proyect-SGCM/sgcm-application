@@ -2,34 +2,33 @@ package ec.edu.utpl.app.sgcmapplication.models.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity 
-@Table(name= "usuarios")
+@Entity
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
-    
+
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_usuarios;
     private String cedula;
     private String username;
     private String password;
-    private int id_rol;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_rol")
+    private Rol id_rol;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuarios, String cedula, String username, String password, int id_rol) {
-        this.id_usuarios = id_usuarios;
-        this.cedula = cedula;
-        this.username = username;
-        this.password = password;
-        this.id_rol = id_rol;
-    }
-
+   
     public int getId_usuarios() {
         return id_usuarios;
     }
@@ -62,11 +61,11 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public int getId_rol() {
+    public Rol getId_rol() {
         return id_rol;
     }
 
-    public void setId_rol(int id_rol) {
+    public void setId_rol(Rol id_rol) {
         this.id_rol = id_rol;
     }
 
