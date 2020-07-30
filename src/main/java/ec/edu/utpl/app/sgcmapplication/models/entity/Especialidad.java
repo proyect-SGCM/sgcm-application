@@ -14,7 +14,7 @@ public class Especialidad implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_especialidad;
+	private Long id_especialidad;
 	private String codigo;
 	private String nombre;
 
@@ -22,11 +22,11 @@ public class Especialidad implements Serializable {
 
 	}
 
-	public long getId_especialidad() {
+	public Long getId_especialidad() {
 		return id_especialidad;
 	}
 
-	public void setId_especialidad(long id_especialidad) {
+	public void setId_especialidad(Long id_especialidad) {
 		this.id_especialidad = id_especialidad;
 	}
 

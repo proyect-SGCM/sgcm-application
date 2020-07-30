@@ -14,24 +14,24 @@ public class Rol implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_rol;
+	private Long id_rol;
 	private String nombre;
 	private String descripcion;
 
+	/*
+	 * @OneToMany(mappedBy = "id_rol", fetch = FetchType.EAGER, cascade =
+	 * CascadeType.ALL) private List<Medico> Medicos;
+	 */
+
 	public Rol() {
+		// Medicos = new ArrayList<Medico>();
 	}
 
-	public Rol(int id_rol, String nombre, String descripcion) {
-		this.id_rol = id_rol;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
+	public Long getId_rol() {
+		return id_rol;
 	}
 
-	public int getId_rol() {
-		return this.id_rol;
-	}
-
-	public void setId_rol(int id_rol) {
+	public void setId_rol(Long id_rol) {
 		this.id_rol = id_rol;
 	}
 
@@ -50,6 +50,12 @@ public class Rol implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	/*
+	 * public List<Medico> getMedicos() { return Medicos; }
+	 * 
+	 * public void setMedicos(List<Medico> medicos) { Medicos = medicos; }
+	 */
 
 	private static final long serialVersionUID = 1L;
 }
