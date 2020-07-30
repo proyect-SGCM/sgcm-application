@@ -7,13 +7,19 @@ package ec.edu.utpl.app.sgcmapplication.controller;
 
 import ec.edu.utpl.app.sgcmapplication.models.entity.Cita;
 import ec.edu.utpl.app.sgcmapplication.models.services.ICitaService;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -46,20 +52,37 @@ public class CitaController {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            medico_especialidad = medico_especialidadService.findById(id);
+            cita = citaService.findById(id);
         } catch (DataAccessException e) {
-            response.put("mensaje", "La vinculación Medico-Especialidad con el ID: "
-                    .concat(id.toString().concat(" no existe en la base de datos!")));
+            response.put("mensaje", "Error con citas con el ID: ");
             response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
-        if (medico_especialidad == null) {
-            response.put("mensaje", "La vinculación Medico-Especialidad con el ID: "
-                    .concat(id.toString().concat(" no existe en la base de datos!")));
+        if (cita == null) {
+            response.put("mensaje", "Error con citas con el ID: ");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<Medico_especialidad>(medico_especialidad, HttpStatus.OK);
+        return new ResponseEntity<Cita>(cita, HttpStatus.OK);
+    }
+
+    @PutMapping("/update_cita/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Cita editarCita(@RequestBody Cita cita,
+            @PathVariable int id) {
+
+        Cita citaActual = citaService.findById(id);
+
+        citaActual.setMedico(cita.getMedico());
+        citaActual.setPaciente(cita.getPaciente());
+
+        return citaService.save(citaActual);
+    }
+
+    @DeleteMapping("/medico_especialidad/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void eliminarCita(@PathVariable int id) {
+        citaService.delete(id);
     }
 }
