@@ -1,4 +1,4 @@
-package ec.edu.utpl.app.sgcmapplicationec.edu.utpl.app.sgcmapplication.models.services;
+package ec.edu.utpl.app.sgcmapplication.models.services;
 
 import java.util.List;
 

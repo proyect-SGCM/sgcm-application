@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.edu.utpl.app.sgcmapplication.models.entity.Resultado;
-import ec.edu.utpl.app.sgcmapplicationec.edu.utpl.app.sgcmapplication.models.services.IResultadoService;
+import ec.edu.utpl.app.sgcmapplication.models.services.IResultadoService;
 
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
