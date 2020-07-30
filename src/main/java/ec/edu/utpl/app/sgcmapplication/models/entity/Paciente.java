@@ -3,9 +3,12 @@ package ec.edu.utpl.app.sgcmapplication.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +18,6 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_pacientes;
-	private Rol id_rol;
 	private String nombre;
 	private String apellido;
 	private String fecha_nacimiento;
@@ -27,6 +29,10 @@ public class Paciente implements Serializable {
 	private String tipo_sangre;
 	private String username;
 	private String password;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_rol")
+	private Rol id_rol;
 
 	public Paciente() {
 

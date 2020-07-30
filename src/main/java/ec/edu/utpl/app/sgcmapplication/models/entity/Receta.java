@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,9 +19,12 @@ public class Receta implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_receta;
-	private Paciente id_paciente;
 	private String descripcion;
 	private Date fecha;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_paciente")
+	private Paciente id_pacientes;
 
 	public Receta() {
 
@@ -32,12 +38,12 @@ public class Receta implements Serializable {
 		this.id_receta = id_receta;
 	}
 
-	public Paciente getId_paciente() {
-		return id_paciente;
+	public Paciente getId_pacientes() {
+		return id_pacientes;
 	}
 
-	public void setId_paciente(Paciente id_paciente) {
-		this.id_paciente = id_paciente;
+	public void setId_pacientes(Paciente id_pacientes) {
+		this.id_pacientes = id_pacientes;
 	}
 
 	public String getDescripcion() {
