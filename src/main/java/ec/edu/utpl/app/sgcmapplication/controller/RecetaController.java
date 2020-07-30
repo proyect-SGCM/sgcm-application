@@ -81,7 +81,7 @@ public class RecetaController {
 
 		Receta recetaActual = recetaService.findById(id);
 
-		recetaActual.setId_paciente(receta.getId_paciente());
+		recetaActual.setId_pacientes(receta.getId_pacientes());
 		recetaActual.setDescripcion(receta.getDescripcion());
 		recetaActual.setFecha(receta.getFecha());
 
