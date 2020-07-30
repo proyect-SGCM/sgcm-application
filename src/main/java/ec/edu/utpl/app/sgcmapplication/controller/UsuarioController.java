@@ -59,13 +59,13 @@ public class UsuarioController {
         try {
             user = userservice.findById(id);
         } catch (DataAccessException e) {
-            response.put("mensaje", "El Médico con el ID: no existe en la base de datos!");
+            response.put("mensaje", "El Usuario con el ID: no existe en la base de datos!");
             response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
 
         if (user == null) {
-            response.put("mensaje", "El Médico con el ID:  no existe en la base de datos! ");
+            response.put("mensaje", "El Usuario con el ID:  no existe en la base de datos! ");
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<Usuario>(user, HttpStatus.OK);
