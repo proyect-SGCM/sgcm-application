@@ -18,13 +18,8 @@ public class Rol implements Serializable {
 	private String nombre;
 	private String descripcion;
 
-	/*
-	 * @OneToMany(mappedBy = "id_rol", fetch = FetchType.EAGER, cascade =
-	 * CascadeType.ALL) private List<Medico> Medicos;
-	 */
-
 	public Rol() {
-		// Medicos = new ArrayList<Medico>();
+
 	}
 
 	public Long getId_rol() {
@@ -50,12 +45,6 @@ public class Rol implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-	/*
-	 * public List<Medico> getMedicos() { return Medicos; }
-	 * 
-	 * public void setMedicos(List<Medico> medicos) { Medicos = medicos; }
-	 */
 
 	private static final long serialVersionUID = 1L;
 }

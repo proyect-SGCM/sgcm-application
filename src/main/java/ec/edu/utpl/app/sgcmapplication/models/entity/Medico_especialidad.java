@@ -3,6 +3,7 @@ package ec.edu.utpl.app.sgcmapplication.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,11 +19,11 @@ public class Medico_especialidad implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idmedico_especialidad;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_medico")
 	private Medico medico;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_especialidad")
 	private Especialidad especialidad;
 
