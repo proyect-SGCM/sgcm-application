@@ -3,9 +3,12 @@ package ec.edu.utpl.app.sgcmapplication.models.entity;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +18,9 @@ public class Resultado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_resultado;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_examen")
 	private Examen id_examen;
 	private String resultado;
 

@@ -83,7 +83,7 @@ public class HistoriaClinicaController {
 
 		historiaClinicaActual.setCodigo_historiaClinica(historiaClinica.getCodigo_historiaClinica());
 		historiaClinicaActual.setMotivo_consulta(historiaClinica.getMotivo_consulta());
-		historiaClinicaActual.setEnfermendad_actual(historiaClinica.getEnfermendad_actual());
+		historiaClinicaActual.setEnfermedad_actual(historiaClinica.getEnfermedad_actual());
 		historiaClinicaActual.setEstatura(historiaClinica.getEstatura());
 		historiaClinicaActual.setPeso(historiaClinica.getPeso());
 		historiaClinicaActual.setPresion(historiaClinica.getPresion());
