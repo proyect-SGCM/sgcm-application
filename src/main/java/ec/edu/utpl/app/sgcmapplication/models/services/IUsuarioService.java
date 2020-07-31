@@ -9,9 +9,11 @@ import java.util.List;
  */
 public interface IUsuarioService {
 
-    public List<Usuario> getUsuarios();
-    public Usuario addUsuario(Usuario rol);
-    public Usuario findById(int id);
-    public void delete(int id);
-}
+	public List<Usuario> getUsuarios();
 
+	public Usuario addUsuario(Usuario rol);
+
+	public Usuario findById(int id);
+
+	public void delete(int id);
+}
