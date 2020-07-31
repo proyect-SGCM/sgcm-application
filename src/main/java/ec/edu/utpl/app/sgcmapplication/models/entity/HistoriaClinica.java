@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,26 +18,29 @@ public class HistoriaClinica implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_historiaClinica;
+	private Long id_historia_clinica;
 	private String codigo_historiaClinica;
 	private String motivo_consulta;
-	private String enfermendad_actual;
+	private String enfermedad_actual;
 	private double estatura;
 	private double peso;
 	private String presion;
 	private Date fecha;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_pacientes")
 	private Paciente id_paciente;
 
 	public HistoriaClinica() {
 
 	}
 
-	public Long getId_historiaClinica() {
-		return id_historiaClinica;
+	public Long getId_historia_clinica() {
+		return id_historia_clinica;
 	}
 
-	public void setId_historiaClinica(Long id_historiaClinica) {
-		this.id_historiaClinica = id_historiaClinica;
+	public void setId_historia_clinica(Long id_historia_clinica) {
+		this.id_historia_clinica = id_historia_clinica;
 	}
 
 	public String getCodigo_historiaClinica() {
@@ -53,12 +59,12 @@ public class HistoriaClinica implements Serializable {
 		this.motivo_consulta = motivo_consulta;
 	}
 
-	public String getEnfermendad_actual() {
-		return enfermendad_actual;
+	public String getEnfermedad_actual() {
+		return enfermedad_actual;
 	}
 
-	public void setEnfermendad_actual(String enfermendad_actual) {
-		this.enfermendad_actual = enfermendad_actual;
+	public void setEnfermedad_actual(String enfermedad_actual) {
+		this.enfermedad_actual = enfermedad_actual;
 	}
 
 	public double getEstatura() {

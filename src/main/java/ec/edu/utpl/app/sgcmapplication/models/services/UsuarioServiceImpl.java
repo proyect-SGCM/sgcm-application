@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ec.edu.utpl.app.sgcmapplication.models.services;
 
 import ec.edu.utpl.app.sgcmapplication.models.dao.IUsuarioDao;
@@ -10,6 +5,7 @@ import ec.edu.utpl.app.sgcmapplication.models.entity.Usuario;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class UsuarioServiceImpl  implements IUsuarioService{
@@ -35,6 +31,4 @@ public class UsuarioServiceImpl  implements IUsuarioService{
     public void delete(int id) {
         userDao.deleteById(id);
     }
-    
-   
 }
