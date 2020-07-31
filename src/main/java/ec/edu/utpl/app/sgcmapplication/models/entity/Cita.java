@@ -29,6 +29,11 @@ public class Cita implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_paciente")
     private Paciente paciente;
+    
+    private String fecha;
+    private String hora;
+
+    
 
     public Cita() {
     }
@@ -57,5 +62,20 @@ public class Cita implements Serializable {
         this.paciente = paciente;
     }
  
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
     private static final long serialVersionUID = 1L;
 }

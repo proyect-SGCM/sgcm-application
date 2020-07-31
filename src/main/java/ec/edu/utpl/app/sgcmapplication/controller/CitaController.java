@@ -76,6 +76,8 @@ public class CitaController {
 
         citaActual.setMedico(cita.getMedico());
         citaActual.setPaciente(cita.getPaciente());
+        citaActual.setFecha(cita.getFecha());
+        citaActual.setHora(cita.getHora());
 
         return citaService.save(citaActual);
     }
