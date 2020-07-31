@@ -29,64 +29,62 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Axel
  */
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
-    
-    @Autowired
-    private IUsuarioService userservice;
-    
-    // REGISTRAR USUARIOS
-    @PostMapping("/create")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Usuario crearUsuario(@RequestBody Usuario usuario) {
-        return userservice.addUsuario(usuario);
-    }
 
-    //LISTAR USUARIOS
-    @GetMapping("/get_usuarios")
-    public List<Usuario> getUsuarios() {
-        return userservice.getUsuarios();
-    }
+	@Autowired
+	private IUsuarioService userservice;
 
-    @GetMapping("/usuario/{id}")
-    public ResponseEntity<?> verUsuario(@PathVariable int id) {
+	// REGISTRAR USUARIOS
+	@PostMapping("/create")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Usuario crearUsuario(@RequestBody Usuario usuario) {
+		return userservice.addUsuario(usuario);
+	}
 
-        Usuario user = null;
-        Map<String, Object> response = new HashMap<>();
+	// LISTAR USUARIOS
+	@GetMapping("/get_usuarios")
+	public List<Usuario> getUsuarios() {
+		return userservice.getUsuarios();
+	}
 
-        try {
-            user = userservice.findById(id);
-        } catch (DataAccessException e) {
-            response.put("mensaje", "El Usuario con el ID: no existe en la base de datos!");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
+	@GetMapping("/usuario/{id}")
+	public ResponseEntity<?> verUsuario(@PathVariable int id) {
 
-        if (user == null) {
-            response.put("mensaje", "El Usuario con el ID:  no existe en la base de datos! ");
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<Usuario>(user, HttpStatus.OK);
-    }
+		Usuario user = null;
+		Map<String, Object> response = new HashMap<>();
 
-    //ACTUALIZAR USUARIOS
-    @PutMapping("/update/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Usuario editarPersona(@RequestBody Usuario usuario, @PathVariable Integer id) {
-        Usuario usuarioAcutal = userservice.findById(id);
-        usuarioAcutal.setCedula(usuario.getCedula());
-        usuarioAcutal.setUsername(usuario.getUsername());
-        usuarioAcutal.setPassword(usuario.getPassword());
-        usuarioAcutal.setId_rol(usuario.getId_rol());
-        return userservice.addUsuario(usuarioAcutal);
-    }
+		try {
+			user = userservice.findById(id);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "El Usuario con el ID: no existe en la base de datos!");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
 
-    //ELIMINAR USUARIOS
-    @DeleteMapping("/delete/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarUsuario(@PathVariable int id) {
-        userservice.delete(id);
-    }
+		if (user == null) {
+			response.put("mensaje", "El Usuario con el ID:  no existe en la base de datos! ");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Usuario>(user, HttpStatus.OK);
+	}
+
+	// ACTUALIZAR USUARIOS
+	@PutMapping("/update/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Usuario editarPersona(@RequestBody Usuario usuario, @PathVariable Integer id) {
+		Usuario usuarioAcutal = userservice.findById(id);
+		usuarioAcutal.setUsername(usuario.getUsername());
+		usuarioAcutal.setPassword(usuario.getPassword());
+		return userservice.addUsuario(usuarioAcutal);
+	}
+
+	// ELIMINAR USUARIOS
+	@DeleteMapping("/delete/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void eliminarUsuario(@PathVariable int id) {
+		userservice.delete(id);
+	}
 }

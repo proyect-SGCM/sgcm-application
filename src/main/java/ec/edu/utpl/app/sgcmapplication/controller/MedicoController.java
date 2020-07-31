@@ -81,12 +81,11 @@ public class MedicoController {
 
 		Medico medicoActual = medicoService.findById(id);
 
+		medicoActual.setCedula(medico.getCedula());
 		medicoActual.setNombre(medico.getNombre());
 		medicoActual.setApellido(medico.getApellido());
 		medicoActual.setNro_consultorio(medico.getNro_consultorio());
-		medicoActual.setUsername(medico.getUsername());
-		medicoActual.setPassword(medico.getPassword());
-		medicoActual.setId_rol(medico.getId_rol());
+		medicoActual.setId_usuario(medico.getId_usuario());
 
 		return medicoService.save(medicoActual);
 	}

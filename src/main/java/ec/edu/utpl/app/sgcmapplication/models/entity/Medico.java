@@ -18,15 +18,14 @@ public class Medico implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_medico;
+	private int cedula;
 	private String nombre;
 	private String apellido;
-	private String username;
-	private String password;
 	private int nro_consultorio;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_rol")
-	private Rol id_rol;
+	@JoinColumn(name = "id_usuarios")
+	private Usuario id_usuario;
 
 	public Medico() {
 
@@ -38,6 +37,14 @@ public class Medico implements Serializable {
 
 	public void setId_medico(Long id_medico) {
 		this.id_medico = id_medico;
+	}
+
+	public int getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(int cedula) {
+		this.cedula = cedula;
 	}
 
 	public String getNombre() {
@@ -56,22 +63,6 @@ public class Medico implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public int getNro_consultorio() {
 		return nro_consultorio;
 	}
@@ -80,12 +71,12 @@ public class Medico implements Serializable {
 		this.nro_consultorio = nro_consultorio;
 	}
 
-	public Rol getId_rol() {
-		return id_rol;
+	public Usuario getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setId_rol(Rol id_rol) {
-		this.id_rol = id_rol;
+	public void setId_usuario(Usuario id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	private static final long serialVersionUID = 1L;

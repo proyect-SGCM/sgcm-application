@@ -1,6 +1,7 @@
 package ec.edu.utpl.app.sgcmapplication.models.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,21 +19,20 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_pacientes;
+	private int cedula;
 	private String nombre;
 	private String apellido;
-	private String fecha_nacimiento;
+	private Date fecha_nacimiento;
 	private String sexo;
 	private String estado_civil;
 	private String ocupacion;
 	private String direccion;
 	private int telefono;
 	private String tipo_sangre;
-	private String username;
-	private String password;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_rol")
-	private Rol id_rol;
+	@JoinColumn(name = "id_usuarios")
+	private Usuario id_usuario;
 
 	public Paciente() {
 
@@ -46,12 +46,12 @@ public class Paciente implements Serializable {
 		this.id_pacientes = id_pacientes;
 	}
 
-	public Rol getId_rol() {
-		return id_rol;
+	public int getCedula() {
+		return cedula;
 	}
 
-	public void setId_rol(Rol id_rol) {
-		this.id_rol = id_rol;
+	public void setCedula(int cedula) {
+		this.cedula = cedula;
 	}
 
 	public String getNombre() {
@@ -70,11 +70,11 @@ public class Paciente implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public String getFecha_nacimiento() {
+	public Date getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
 
-	public void setFecha_nacimiento(String fecha_nacimiento) {
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
@@ -126,20 +126,12 @@ public class Paciente implements Serializable {
 		this.tipo_sangre = tipo_sangre;
 	}
 
-	public String getUsername() {
-		return username;
+	public Usuario getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setId_usuario(Usuario id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	private static final long serialVersionUID = 1L;

@@ -81,6 +81,7 @@ public class PacienteController {
 
 		Paciente pacienteActual = pacienteService.findById(id);
 
+		pacienteActual.setCedula(paciente.getCedula());
 		pacienteActual.setNombre(paciente.getNombre());
 		pacienteActual.setApellido(paciente.getApellido());
 		pacienteActual.setFecha_nacimiento(paciente.getFecha_nacimiento());
@@ -90,9 +91,7 @@ public class PacienteController {
 		pacienteActual.setDireccion(paciente.getDireccion());
 		pacienteActual.setTelefono(paciente.getTelefono());
 		pacienteActual.setTipo_sangre(paciente.getTipo_sangre());
-		pacienteActual.setUsername(paciente.getUsername());
-		pacienteActual.setPassword(paciente.getPassword());
-		pacienteActual.setId_rol(paciente.getId_rol());
+		pacienteActual.setId_usuario(paciente.getId_usuario());
 
 		return pacienteService.save(pacienteActual);
 	}

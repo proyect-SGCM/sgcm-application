@@ -17,7 +17,7 @@ public class Resultado implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_resultado;
+	private Long roles_id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_examen")
@@ -28,12 +28,12 @@ public class Resultado implements Serializable {
 
 	}
 
-	public Long getId_resultado() {
-		return id_resultado;
+	public Long getRoles_id() {
+		return roles_id;
 	}
 
-	public void setId_resultado(Long id_resultado) {
-		this.id_resultado = id_resultado;
+	public void setRoles_id(Long roles_id) {
+		this.roles_id = roles_id;
 	}
 
 	public Examen getId_examen() {
